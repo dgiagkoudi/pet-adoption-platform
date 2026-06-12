@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws & Home - Πλατφόρμα Υιοθεσίας Αδέσποτων</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar" aria-label="Κεντρική πλοήγηση">
+            <div class="logo">Paws & Home</div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-route active" data-route="home">Αρχική</a></li>
+                <li><a href="#" class="nav-route" data-route="about">Ποιοι Είμαστε</a></li>
+                <li><a href="#" class="nav-route" data-route="contact">Επικοινωνία</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="app-content">
+        <section id="view-home" class="page-view">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Βρες τον επόμενο πιστό σου φίλο</h1>
+                    <p>Δεκάδες ζωάκια αναζητούν ένα ζεστό σπιτικό. Υιοθέτησε, μην αγοράζεις.</p>
+                    <button id="cta-hero-scroll" class="btn-cta-hero" aria-label="Πλοήγηση στον κατάλογο με τα ζωάκια">Δες τα ζωάκια μας</button>
+                </div>
+            </section>
+            <section class="donation-banner" aria-label="Υποστήριξη του οργανισμού">
+                <div class="donation-container">
+                    <div class="donation-text">
+                        <h2>Γίνε ο ήρωάς τους 🤍</h2>
+                        <p>Οι δωρεές σε τροφές, φάρμακα και είδη πρώτης ανάγκης κρατούν το καταφύγιό μας ανοιχτό.</p>
+                    </div>
+                    <button class="btn-donation nav-route" data-route="contact" data-subject="donation">Μάθε πώς να βοηθήσεις</button>
+                </div>
+            </section>
+            <main id="catalog" class="catalog-container">
+                <aside class="filters-sidebar" aria-labelledby="filters-title">
+                    <h2 id="filters-title">Φίλτρα Αναζήτησης</h2>
+                    <div class="filter-group">
+                        <label for="filter-type">Είδος Ζώου</label>
+                        <select id="filter-type"><option value="all">Όλα τα ζωάκια</option><option value="dog">Σκύλος</option><option value="cat">Γάτα</option></select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-age">Ηλικία</label>
+                        <select id="filter-age"><option value="all">Όλες οι ηλικίες</option><option value="young">Νέο (έως 1 έτους)</option><option value="adult">Ενήλικο (1-7 ετών)</option><option value="senior">Ηλικιωμένο (7+ ετών)</option></select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-city">Πόλη</label>
+                        <select id="filter-city"><option value="all">Όλες οι πόλεις</option><option value="thessaloniki">Θεσσαλονίκη</option><option value="athens">Αθήνα</option><option value="patras">Πάτρα</option></select>
+                    </div>
+                </aside>
+                <section class="cards-section" aria-label="Λίστα διαθέσιμων ζώων">
+                    <div id="results-counter" aria-live="polite" class="results-counter">Φόρτωση αποτελεσμάτων...</div>
+                    <div id="animals-grid" class="animals-grid"></div>
+                </section>
+            </main>
+            <section class="faq-section" id="faq-block">
+                <div class="faq-container">
+                    <h2>Συχνές Ερωτήσεις (FAQ)</h2>
+                    <p class="faq-intro">Έχεις απορίες για τη διαδικασία υιοθεσίας; Διάβασε τα Συχνά Ερωτήματα πριν επικοινωνήσεις μαζί μας.</p>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="faq1"><span>Ποια είναι η διαδικασία υιοθεσίας;</span><span class="icon" aria-hidden="true">+</span></button>
+                            <div id="faq1" class="accordion-content" aria-hidden="true">
+                                <p>Αφού υποβάλετε την αίτησή σας, η ομάδα μας θα επικοινωνήσει μαζί σας για μια σύντομη τηλεφωνική συνέντευξη και θα κανονίσουμε μια συνάντηση γνωριμίας με το ζωάκι στο καταφύγιο.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="faq2"><span>Υπάρχει κάποιο κόστος για την υιοθεσία;</span><span class="icon" aria-hidden="true">+</span></button>
+                            <div id="faq2" class="accordion-content" aria-hidden="true">
+                                <p>Η υιοθεσία είναι εντελώς δωρεάν. Το ζωάκι παραδίδεται εμβολιασμένο, τσιπαρισμένο και στειρωμένο (αν επιτρέπει η ηλικία του). Ο νέος ιδιοκτήτης επιβαρύνεται μόνο με το κόστος αλλαγής των στοιχείων του microchip στον κτηνίατρο.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="faq3"><span>Μπορώ να φιλοξενήσω ένα ζώο προσωρινά;</span><span class="icon" aria-hidden="true">+</span></button>
+                            <div id="faq3" class="accordion-content" aria-hidden="true">
+                                <p>Φυσικά! Η προσωρινή φιλοξενία (fostering) είναι ζωτικής σημασίας για εμάς, ειδικά για κουτάβια, γατάκια ή ζωάκια που αναρρώνουν από χειρουργεία.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="view-about" class="page-view d-none">
+            <div class="static-page">
+                <h1>Ποιοι Είμαστε</h1>
+                <p>Το <strong>Paws & Home</strong> είναι μια πρωτοβουλία που δημιουργήθηκε με αγάπη για τα αδέσποτα ζώα. Στόχος μας είναι να γεφυρώσουμε το χάσμα ανάμεσα στα καταφύγια, τους εθελοντές και τους ανθρώπους που επιθυμούν να ανοίξουν το σπίτι τους σε έναν νέο τετράποδο φίλο.</p>
+                <p style="margin-top: 1rem;">Πιστεύουμε στη συμπερίληψη, στην υπεύθυνη υιοθεσία και στην προστασία των δικαιωμάτων των ζώων. Κάθε ζωάκι που βλέπετε στην πλατφόρμα μας συνοδεύεται από πλήρες ιστορικό και είναι έτοιμο για μια νέα αρχή.</p>
+                <div class="cta-about-box">
+                    <h3>Θέλεις να γίνεις μέρος της αλλαγής;</h3>
+                    <p>Ψάχνουμε πάντα εθελοντές για τη φροντίδα των ζώων, τη βόλτα τους και τη διοργάνωση εκδηλώσεων υιοθεσίας.</p>
+                    <button class="btn-cta-volunteer nav-route" data-route="contact" data-subject="volunteer">Γίνε Εθελοντής</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-contact" class="page-view d-none">
+            <div class="static-page">
+                <div class="faq-quick-nav">Έχεις απορίες για τη διαδικασία υιοθεσίας; <a href="#" id="link-to-faq">Διάβασε τα Συχνά Ερωτήματα πριν στείλεις μήνυμα</a>.</div>
+                <h1>Επικοινωνία</h1>
+                <p style="margin-bottom: 1.5rem;">Έχετε απορίες ή θέλετε να βοηθήσετε τον οργανισμό μας ως εθελοντής; Συμπληρώστε την παρακάτω φόρμα.</p>
+                <form id="contact-page-form" class="adopt-form" novalidate>
+                    <div class="form-group">
+                        <label style="font-weight: bold; margin-bottom: 0.5rem;">Σκοπός Επικοινωνίας *</label>
+                        <div class="priority-toggle-container" role="radiogroup" aria-label="Σκοπός επικοινωνίας">
+                            <label class="toggle-card"><input type="radio" name="contact-subject" value="general" checked><span class="toggle-label">Γενική Ερώτηση</span></label>
+                            <label class="toggle-card"><input type="radio" name="contact-subject" value="volunteer"><span class="toggle-label">Εθελοντισμός</span></label>
+                            <label class="toggle-card"><input type="radio" name="contact-subject" value="donation"><span class="toggle-label">Δωρεά / Υποστήριξη</span></label>
+                            <label class="toggle-card urgent"><input type="radio" name="contact-subject" value="urgent"><span class="toggle-label">Επείγουσα Αναφορά</span></label>
+                        </div>
+                        <div id="priority-badge" class="priority-badge-info">Προτεραιότητα: Κανονική</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-name">Ονοματεπώνυμο *</label>
+                        <input type="text" id="contact-name">
+                        <span class="error-message" id="contact-name-error" aria-live="assertive"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email *</label>
+                        <input type="email" id="contact-email">
+                        <span class="error-message" id="contact-email-error" aria-live="assertive"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-msg">Μήνυμα *</label>
+                        <textarea id="contact-msg" rows="5"></textarea>
+                        <span class="error-message" id="contact-msg-error" aria-live="assertive"></span>
+                    </div>
+                    <button type="submit" class="btn-submit">Αποστολή Μηνύματος</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div id="adopt-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="close-btn" aria-label="Κλείσιμο παραθύρου">&times;</button>
+            
+            <h2 id="modal-title">Αίτηση Εκδήλωσης Ενδιαφέροντος</h2>
+            <p class="modal-subtitle">Μαθαίνεις για τον/την: <span id="modal-animal-name"></span></p>
+            
+            <form id="adopt-form" class="adopt-form" novalidate>
+                <div class="form-group">
+                    <label for="user-name">Ονοματεπώνυμο *</label>
+                    <input type="text" id="user-name">
+                    <span class="error-message" id="user-name-error" aria-live="assertive"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user-email">Email Επικοινωνίας *</label>
+                    <input type="email" id="user-email">
+                    <span class="error-message" id="user-email-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-message">Γιατί θέλετε να υιοθετήσετε αυτό το ζωάκι; *</label>
+                    <textarea id="user-message" rows="4"></textarea>
+                    <span class="error-message" id="user-message-error" aria-live="assertive"></span>
+                </div>
+
+                <button type="submit" class="btn-submit">Υποβολή Αίτησης</button>
+            </form>
+        </div>
+    </div>
+    <footer class="global-footer">
+        <div class="footer-container">
+            <div class="footer-col footer-about">
+                <h3>Paws & Home</h3>
+                <p>Δημιουργούμε γέφυρες αγάπης ανάμεσα στα αδέσποτα ζώα και τις νέες τους οικογένειες. Υιοθέτησε υπεύθυνα.</p>
+            </div>
+            <div class="footer-col footer-links">
+                <h3>Γρήγοροι Σύνδεσμοι</h3>
+                <ul>
+                    <li><a href="#" class="nav-route" data-route="home">Αρχική Σελίδα</a></li>
+                    <li><a href="#" class="nav-route" data-route="about">Ποιοι Είμαστε</a></li>
+                    <li><a href="#" class="nav-route" data-route="contact">Επικοινωνία</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-action">
+                <h3>Γίνε Εθελοντής</h3>
+                <p>Μπορείς να βοηθήσεις κι εσύ! Έλα στην ομάδα μας ως εθελοντής ή στήριξε το έργο μας.</p>
+                <button class="btn-footer-cta nav-route" data-route="contact" data-subject="volunteer">Γίνε Εθελοντής σήμερα</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Paws & Home. All Rights Reserved.</p>
+            <p class="tech-stack">Built with Semantic HTML5, Custom CSS Grid & Vanilla JS</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
